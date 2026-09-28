@@ -1,0 +1,522 @@
+/* ============================================================
+   AltIQ Labs — Monotone Design Tokens
+   Single hue system derived from brand #1977bc = hsl(205, 67%, 44.5%)
+   Every colour in the site MUST resolve to a token in this file.
+   No second hue is permitted anywhere (no orange, purple, teal,
+   green, red accents — see .aiq-status-* for the only exceptions,
+   which stay on hue 205 and signal by lightness, not by hue).
+   All ratios below verified against WCAG 2.1 AA.
+   ============================================================ */
+
+:root {
+  /* ---- hue anchor ---------------------------------------- */
+  --aiq-hue: 205;
+  --aiq-sat: 77%;
+
+  /* ---- BRAND RAMP (saturated, hue 205) -------------------- */
+  --aiq-50:  #edf6fd;   /* washes, hover rows, zebra stripes      */
+  --aiq-100: #d2e9f9;   /* tinted section backgrounds             */
+  --aiq-200: #a5d3f3;   /* dividers on dark, chart band 1         */
+  --aiq-300: #6fb8ec;   /* accent text ON dark (8.49:1 on ink)    */
+  --aiq-400: #399de5;   /* hover state for brand-500 fills        */
+  --aiq-500: #1977bc;   /* ◀ THE BRAND. 4.77:1 on white — passes  */
+                        /*   AA for body text AND as a button fill */
+  --aiq-600: #1668a2;   /* button hover (white AA 5.94:1)         */
+  --aiq-700: #11517e;   /* links & brand text on light (8.24:1)   */
+  --aiq-800: #0c3a5a;   /* dark panels, footer                    */
+  --aiq-900: #08253b;   /* deepest brand surface                  */
+  --aiq-950: #051724;   /* hero overlay floor                    */
+
+  /* ---- NEUTRAL / TONAL RAMP (hue 205, low sat) ------------ */
+  /* Desaturated but never grey — this is what keeps it monotone */
+  --aiq-canvas:      #fcfdfd;  /* page background                */
+  --aiq-surface:     #f5f8f9;  /* cards                          */
+  --aiq-surface-2:   #ecf0f3;  /* nested cards, inputs, code     */
+  --aiq-line:        #dae1e7;  /* decorative hairlines only      */
+  --aiq-line-strong: #bdc9d1;  /* card borders                   */
+  --aiq-line-ui:     #7a8f9f;  /* input/control borders 3.29:1 AA*/
+  --aiq-text-faint:  #8596a3;  /* disabled, placeholder ONLY     */
+  --aiq-text-muted:  #566976;  /* secondary body      5.30:1 AA  */
+  --aiq-text:        #27353f;  /* primary body       11.82:1 AA  */
+  --aiq-ink:         #152028;  /* headings, dark hero            */
+  --aiq-ink-deep:    #0c1318;  /* max contrast                   */
+  --aiq-white:       #ffffff;  /* zero-saturation end of family  */
+
+  /* ---- SEMANTIC ROLES ------------------------------------- */
+  /* Point components at these, never at a ramp step directly.  */
+  --aiq-bg:              var(--aiq-canvas);
+  --aiq-bg-alt:          var(--aiq-surface);
+  --aiq-bg-tint:         var(--aiq-50);
+  --aiq-bg-brand:        var(--aiq-500);
+  --aiq-bg-dark:         var(--aiq-ink);
+  --aiq-bg-footer:       var(--aiq-900);
+
+  --aiq-heading:         var(--aiq-ink);
+  --aiq-body:            var(--aiq-text);
+  --aiq-body-dim:        var(--aiq-text-muted);
+  --aiq-eyebrow:         var(--aiq-700);   /* small caps labels  */
+  --aiq-link:            var(--aiq-700);
+  --aiq-link-hover:      var(--aiq-600);
+
+  --aiq-on-dark:         var(--aiq-white);
+  --aiq-on-dark-dim:     var(--aiq-200);
+  --aiq-on-dark-accent:  var(--aiq-300);
+
+  --aiq-btn-bg:          var(--aiq-500);   /* #1977bc, 4.77:1 w/ white — AA */
+  --aiq-btn-bg-hover:    var(--aiq-600);
+  --aiq-btn-fg:          var(--aiq-white);
+  --aiq-btn-ghost-fg:    var(--aiq-700);
+  --aiq-btn-ghost-br:    var(--aiq-line-ui);
+
+  --aiq-border:          var(--aiq-line-strong);
+  --aiq-border-soft:     var(--aiq-line);
+  --aiq-border-field:    var(--aiq-line-ui);
+  --aiq-focus:           var(--aiq-500);
+
+  --aiq-icon:            var(--aiq-500);
+  --aiq-icon-dim:        var(--aiq-text-faint);
+
+  /* ---- ELEVATION (tinted, never neutral black) ------------ */
+  --aiq-shadow-sm: 0 1px 2px  hsl(var(--aiq-hue) 30% 12% / 0.06);
+  --aiq-shadow-md: 0 4px 14px hsl(var(--aiq-hue) 30% 12% / 0.08);
+  --aiq-shadow-lg: 0 12px 34px hsl(var(--aiq-hue) 30% 12% / 0.12);
+  --aiq-ring:      0 0 0 3px  hsl(var(--aiq-hue) 77% 42% / 0.35);
+
+  /* ---- GRADIENTS (single-hue only) ------------------------ */
+  --aiq-grad-brand: linear-gradient(135deg, var(--aiq-600), var(--aiq-400));
+  --aiq-grad-dark:  linear-gradient(160deg, var(--aiq-ink), var(--aiq-900));
+  --aiq-grad-wash:  linear-gradient(180deg, var(--aiq-50), var(--aiq-canvas));
+  /* Replaces every multi-hue gradient in the template. */
+
+  /* ---- STATUS — the ONE concession ------------------------ */
+  /* Monotone means status cannot signal by hue. It signals by
+     lightness + an icon + text. Never colour alone.           */
+  --aiq-status-info:    var(--aiq-500);
+  --aiq-status-good:    var(--aiq-700);
+  --aiq-status-warn:    var(--aiq-400);
+  --aiq-status-bad:     var(--aiq-950);
+
+  /* ---- DATAVIZ: sequential single-hue ramp ---------------- */
+  /* Ordered data only. For categorical data use pattern/shape
+     encoding plus direct labels, not extra hues.              */
+  --aiq-viz-1: #d2e9f9;
+  --aiq-viz-2: #a5d3f3;
+  --aiq-viz-3: #6fb8ec;
+  --aiq-viz-4: #399de5;
+  --aiq-viz-5: #1977bc;
+  --aiq-viz-6: #1668a2;
+  --aiq-viz-7: #11517e;
+  --aiq-viz-8: #0c3a5a;
+}
+
+/* ---- Global monotone enforcement -------------------------- */
+html { color-scheme: light; }
+body {
+  background-color: var(--aiq-bg);
+  color: var(--aiq-body);
+}
+h1, h2, h3, h4, h5, h6 { color: var(--aiq-heading); }
+a { color: var(--aiq-link); }
+a:hover { color: var(--aiq-link-hover); }
+hr { border-color: var(--aiq-border-soft); }
+
+*:focus-visible {
+  outline: 2px solid var(--aiq-focus);
+  outline-offset: 2px;
+  box-shadow: var(--aiq-ring);
+}
+::selection { background: var(--aiq-200); color: var(--aiq-ink); }
+
+/* Neutralise Bootstrap's own hues so nothing leaks through.   */
+:root {
+  --bs-primary: #1977bc;      --bs-primary-rgb: 25,119,188;
+  --bs-secondary: #566976;    --bs-secondary-rgb: 86,105,118;
+  --bs-success: #11517e;      --bs-success-rgb: 17,81,126;
+  --bs-info: #1977bc;         --bs-info-rgb: 25,119,188;
+  --bs-warning: #399de5;      --bs-warning-rgb: 57,157,229;
+  --bs-danger: #051724;       --bs-danger-rgb: 5,23,36;
+  --bs-light: #f5f8f9;        --bs-light-rgb: 245,248,249;
+  --bs-dark: #152028;         --bs-dark-rgb: 21,32,40;
+  --bs-body-color: #27353f;
+  --bs-body-bg: #fcfdfd;
+  --bs-border-color: #bdc9d1;
+  --bs-link-color: #11517e;
+  --bs-link-hover-color: #1668a2;
+  --bs-emphasis-color: #152028;
+}
+
+/* Utilities for the recolour sweep. */
+.aiq-on-dark { color: var(--aiq-on-dark); }
+.aiq-on-dark p, .aiq-on-dark li { color: var(--aiq-on-dark-dim); }
+.aiq-on-dark h1, .aiq-on-dark h2, .aiq-on-dark h3,
+.aiq-on-dark h4, .aiq-on-dark h5, .aiq-on-dark h6 { color: var(--aiq-white); }
+.aiq-sec-light { background: var(--aiq-bg); }
+.aiq-sec-alt   { background: var(--aiq-bg-alt); }
+.aiq-sec-tint  { background: var(--aiq-bg-tint); }
+.aiq-sec-dark  { background: var(--aiq-bg-dark); color: var(--aiq-on-dark); }
+.aiq-sec-brand { background: var(--aiq-bg-brand); color: var(--aiq-white); }
+
+/* ============================================================
+   BOOTSTRAP CONTEXTUAL COMPONENTS
+   Bootstrap hardcodes hex in .alert-*, .btn-*, .text-bg-*, .list-group-item-*
+   and .table-* rather than reading its own --bs-* vars, so the overrides
+   above don't reach them. Collapse the whole contextual family onto hue 205.
+   ============================================================ */
+.alert-primary,.alert-secondary,.alert-success,.alert-info,
+.alert-warning,.alert-danger,.alert-light,.alert-dark{
+  --bs-alert-color: var(--aiq-800);
+  --bs-alert-bg: var(--aiq-50);
+  --bs-alert-border-color: var(--aiq-200);
+  --bs-alert-link-color: var(--aiq-900);
+  color: var(--aiq-800) !important;
+  background-color: var(--aiq-50) !important;
+  border-color: var(--aiq-200) !important;
+}
+.btn-primary,.btn-secondary,.btn-success,.btn-info,.btn-warning,.btn-danger,.btn-dark{
+  --bs-btn-bg: var(--aiq-500);        --bs-btn-border-color: var(--aiq-500);
+  --bs-btn-hover-bg: var(--aiq-600);  --bs-btn-hover-border-color: var(--aiq-600);
+  --bs-btn-active-bg: var(--aiq-800); --bs-btn-active-border-color: var(--aiq-800);
+  --bs-btn-color: var(--aiq-white);   --bs-btn-hover-color: var(--aiq-white);
+  --bs-btn-disabled-bg: var(--aiq-300);
+}
+.btn-light{
+  --bs-btn-bg: var(--aiq-surface);    --bs-btn-color: var(--aiq-text);
+  --bs-btn-border-color: var(--aiq-line-strong);
+  --bs-btn-hover-bg: var(--aiq-surface-2);
+}
+.btn-outline-primary,.btn-outline-secondary,.btn-outline-success,.btn-outline-info,
+.btn-outline-warning,.btn-outline-danger,.btn-outline-dark{
+  --bs-btn-color: var(--aiq-700);     --bs-btn-border-color: var(--aiq-line-ui);
+  --bs-btn-hover-bg: var(--aiq-600);  --bs-btn-hover-border-color: var(--aiq-600);
+  --bs-btn-hover-color: var(--aiq-white);
+}
+.text-bg-primary,.text-bg-secondary,.text-bg-success,.text-bg-info,
+.text-bg-warning,.text-bg-danger,.text-bg-dark{
+  color: var(--aiq-white) !important;
+  background-color: var(--aiq-600) !important;
+}
+.text-bg-light{ color: var(--aiq-text) !important; background-color: var(--aiq-surface) !important; }
+.text-primary,.text-info,.text-success{ color: var(--aiq-700) !important; }
+.text-secondary,.text-muted{ color: var(--aiq-text-muted) !important; }
+.text-warning,.text-danger{ color: var(--aiq-600) !important; }
+.bg-primary,.bg-info,.bg-success,.bg-warning,.bg-danger{ background-color: var(--aiq-600) !important; }
+.bg-secondary{ background-color: var(--aiq-text-muted) !important; }
+.bg-light{ background-color: var(--aiq-surface) !important; }
+.bg-dark{ background-color: var(--aiq-ink) !important; }
+.border-primary,.border-info,.border-success,.border-warning,.border-danger{
+  border-color: var(--aiq-500) !important;
+}
+.link-primary,.link-info,.link-success,.link-warning,.link-danger,.link-dark{
+  color: var(--aiq-700) !important;
+}
+.badge{ background-color: var(--aiq-600); color: var(--aiq-white); }
+.form-control:focus,.form-select:focus{
+  border-color: var(--aiq-500);
+  box-shadow: var(--aiq-ring);
+}
+.form-control,.form-select{ border-color: var(--aiq-border-field); color: var(--aiq-text); }
+.form-check-input:checked{ background-color: var(--aiq-600); border-color: var(--aiq-600); }
+.progress-bar{ background-color: var(--aiq-500); }
+.spinner-border,.spinner-grow{ color: var(--aiq-500); }
+
+/* Bootstrap's raw palette + subtle scales. Unused after the overrides
+   above, but neutralised so no component can ever resolve a foreign hue. */
+:root{
+  --bs-blue:#1977bc;   --bs-indigo:#11517e; --bs-purple:#0c3a5a;
+  --bs-pink:#399de5;   --bs-red:#1668a2;    --bs-orange:#1977bc;
+  --bs-yellow:#399de5; --bs-green:#11517e;  --bs-teal:#1977bc;
+  --bs-cyan:#6fb8ec;   --bs-gray:#566976;   --bs-gray-dark:#27353f;
+  --bs-black:#0c1318;  --bs-white:#ffffff;
+
+  --bs-primary-text-emphasis:#11517e; --bs-secondary-text-emphasis:#566976;
+  --bs-success-text-emphasis:#11517e; --bs-info-text-emphasis:#11517e;
+  --bs-warning-text-emphasis:#11517e; --bs-danger-text-emphasis:#11517e;
+  --bs-light-text-emphasis:#27353f;   --bs-dark-text-emphasis:#152028;
+
+  --bs-primary-bg-subtle:#edf6fd;  --bs-secondary-bg-subtle:#f5f8f9;
+  --bs-success-bg-subtle:#edf6fd;  --bs-info-bg-subtle:#edf6fd;
+  --bs-warning-bg-subtle:#edf6fd;  --bs-danger-bg-subtle:#edf6fd;
+  --bs-light-bg-subtle:#fcfdfd;    --bs-dark-bg-subtle:#bdc9d1;
+
+  --bs-primary-border-subtle:#a5d3f3;  --bs-secondary-border-subtle:#dae1e7;
+  --bs-success-border-subtle:#a5d3f3;  --bs-info-border-subtle:#a5d3f3;
+  --bs-warning-border-subtle:#a5d3f3;  --bs-danger-border-subtle:#a5d3f3;
+  --bs-light-border-subtle:#ecf0f3;    --bs-dark-border-subtle:#bdc9d1;
+
+  --bs-focus-ring-color:rgba(25,119,188,.35);
+  --bs-highlight-bg:#d2e9f9;
+  --bs-code-color:#11517e;
+}
+
+/* Vendor widgets (ng-select, owl-carousel) ship their own palettes and
+   live in node_modules, so they are corrected here rather than patched. */
+.ng-select .ng-clear-wrapper{ color: var(--aiq-text-faint); }
+.ng-select .ng-clear-wrapper:hover .ng-clear{ color: var(--aiq-600); }
+.ng-select .ng-arrow-wrapper .ng-arrow{ border-top-color: var(--aiq-text-muted); }
+.ng-select.ng-select-opened>.ng-select-container .ng-arrow{ border-bottom-color: var(--aiq-600); }
+.ng-select .ng-select-container{
+  border-color: var(--aiq-border-field); color: var(--aiq-text);
+  background: var(--aiq-canvas);
+}
+.ng-select.ng-select-focused>.ng-select-container{
+  border-color: var(--aiq-500); box-shadow: var(--aiq-ring);
+}
+.ng-dropdown-panel{ border-color: var(--aiq-line-strong); background: var(--aiq-canvas); }
+.ng-dropdown-panel .ng-option.ng-option-marked{ background: var(--aiq-50); color: var(--aiq-800); }
+.ng-dropdown-panel .ng-option.ng-option-selected{ background: var(--aiq-100); color: var(--aiq-900); }
+.ng-select .ng-value{ background: var(--aiq-100); color: var(--aiq-900); }
+
+.owl-theme .owl-dots .owl-dot span{ background: var(--aiq-line-strong); }
+.owl-theme .owl-dots .owl-dot.active span,
+.owl-theme .owl-dots .owl-dot:hover span{ background: var(--aiq-500); }
+.owl-theme .owl-nav [class*='owl-']{ background: var(--aiq-surface-2); color: var(--aiq-700); }
+.owl-theme .owl-nav [class*='owl-']:hover{ background: var(--aiq-600); color: var(--aiq-white); }
+
+/* Respect reduced-motion: AOS sets opacity:0 + transforms inline and reveals
+   on scroll, which strands content for anyone who asks for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   HOME-2 CTA PROMOTION
+   The template's .btn_theme_active fills with near-black by design,
+   which leaves the brand colour almost invisible on the homepage.
+   Primary CTAs are promoted to #1977bc (4.77:1 with white — AA).
+   Secondary/ghost CTAs keep ink so the pair stays distinguishable.
+   ============================================================ */
+.btn_theme_active::after,
+.btn_theme_active3::after { background: var(--aiq-500) !important; }
+.btn_theme_active:hover::after,
+.btn_theme_active3:hover::after { background: var(--aiq-600) !important; }
+.btn_theme_active,
+.btn_theme_active3 { color: var(--aiq-white) !important; }
+.btn_theme_active span,
+.btn_theme_active3 span { background-color: var(--aiq-900) !important; }
+.btn_theme_active:hover,
+.btn_theme_active:focus { color: var(--aiq-white) !important; }
+
+/* Ghost / outline CTA */
+.btn_theme { color: var(--aiq-800); border-color: var(--aiq-line-ui); }
+.btn_theme:hover, .btn_theme:focus {
+  border-color: var(--aiq-500) !important; color: var(--aiq-white) !important;
+}
+.btn_theme span { background-color: var(--aiq-500) !important; }
+
+/* Section eyebrow labels + underline accents read as brand */
+.span, .sub-title, .section-subtitle { color: var(--aiq-700); }
+
+/* ============================================================
+   ALTIQ LOGO
+   The supplied lockup is a 2048px raster at ~4:3, so it must be
+   height-constrained or it blows out the header. Header uses the
+   wordmark crop (no tagline — illegible below ~90px tall);
+   footer has the vertical room for the full lockup.
+   ============================================================ */
+.aiq-logo { width: auto; display: block; }
+
+.site-logo .aiq-logo,
+.mobile-logo .aiq-logo { height: 44px; }
+
+.footer-logo .aiq-logo,
+.single-footer .aiq-logo { height: 84px; }
+
+@media (max-width: 991px) {
+  .site-logo .aiq-logo, .mobile-logo .aiq-logo { height: 36px; }
+  .footer-logo .aiq-logo, .single-footer .aiq-logo { height: 68px; }
+}
+
+/* Engagement-model pricing tables on the service pages. */
+.aiq-pricing { width: 100%; border-collapse: collapse; }
+.aiq-pricing th {
+  text-align: left; padding: 14px 16px;
+  background: var(--aiq-surface-2); color: var(--aiq-ink);
+  border-bottom: 2px solid var(--aiq-line-strong); font-weight: 600;
+}
+.aiq-pricing td {
+  padding: 14px 16px; border-bottom: 1px solid var(--aiq-line);
+  color: var(--aiq-text); vertical-align: top;
+}
+.aiq-pricing tr:last-child td { border-bottom: 0; }
+.aiq-pricing tr:hover td { background: var(--aiq-50); }
+.aiq-pill {
+  display: inline-block; margin-left: 8px; padding: 2px 10px;
+  border-radius: 999px; font-size: 12px; font-weight: 600;
+  background: var(--aiq-500); color: var(--aiq-white);
+}
+.service-details-list { list-style: none; padding-left: 0; }
+.service-details-list li { margin-bottom: 10px; color: var(--aiq-text); }
+.service-details-list i { color: var(--aiq-500); margin-right: 8px; }
+.service-details-sidebar-box ul { list-style: none; padding-left: 0; }
+.service-details-sidebar-box li a.active { color: var(--aiq-700); font-weight: 600; }
+
+/* ============================================================
+   WHO WE SERVE
+   Two halves: the qualifying profile on the left (scannable,
+   one line per characteristic) and the sectors on the right as
+   a card grid. The sixth cell is a CTA so the 5 sectors don't
+   leave a ragged hole in the grid.
+   ============================================================ */
+.aiq-serve {
+  background: var(--aiq-950);
+  padding: 96px 0;
+}
+.aiq-serve-title { color: var(--aiq-white); margin: 0; }
+.aiq-serve-lead { color: var(--aiq-200); font-size: 18px; margin: 0; }
+
+.aiq-serve-checks { list-style: none; padding: 0; margin: 0; }
+.aiq-serve-checks li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid var(--aiq-800);
+  color: var(--aiq-white);
+  font-size: 16px;
+}
+.aiq-serve-checks li:last-child { border-bottom: 1px solid var(--aiq-800); }
+.aiq-serve-checks i {
+  color: var(--aiq-300);
+  font-size: 14px;
+  margin-top: 4px;
+  flex: 0 0 auto;
+}
+
+.aiq-serve-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.aiq-serve-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  min-height: 148px;
+  padding: 24px;
+  border: 1px solid var(--aiq-800);
+  border-radius: 10px;
+  background: hsl(var(--aiq-hue) 77% 13% / 0.5);
+  transition: border-color .2s ease, background .2s ease, transform .2s ease;
+}
+.aiq-serve-card i { font-size: 26px; color: var(--aiq-400); }
+.aiq-serve-card span { color: var(--aiq-white); font-weight: 600; font-size: 17px; }
+.aiq-serve-card:hover {
+  border-color: var(--aiq-500);
+  background: hsl(var(--aiq-hue) 77% 20% / 0.6);
+  transform: translateY(-2px);
+}
+.aiq-serve-card-cta { text-decoration: none; }
+.aiq-serve-card-cta span { color: var(--aiq-200); font-weight: 400; font-size: 15px; }
+.aiq-serve-card-cta strong { color: var(--aiq-300); font-size: 17px; }
+.aiq-serve-card-cta i { font-size: 13px; margin-left: 6px; }
+.aiq-serve-card-cta:hover strong { color: var(--aiq-white); }
+
+@media (max-width: 991px) {
+  .aiq-serve { padding: 64px 0; }
+  .aiq-serve-grid { margin-top: 40px; }
+}
+@media (max-width: 575px) {
+  .aiq-serve-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .aiq-serve-card { min-height: 124px; padding: 18px; }
+}
+
+/* Advisor portraits. Anyone without a supplied headshot gets an
+   initials avatar rather than a stand-in photo of someone else. */
+.aiq-advisor-photo {
+  width: 84px; height: 84px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: 2px solid var(--aiq-line);
+}
+.aiq-advisor-initials {
+  display: flex; align-items: center; justify-content: center;
+  background: var(--aiq-100);
+  color: var(--aiq-700);
+  font-weight: 700; font-size: 26px; letter-spacing: .02em;
+  border-color: var(--aiq-200);
+}
+
+/* ============================================================
+   INNER-PAGE COVER
+   The header is absolutely positioned OVER this band, which is why
+   the band carries 90px of top padding. The art is therefore
+   positioned against the CONTENT box (background-origin), so it can
+   never ride up underneath the header, and sized in px so it always
+   fits the 310px content height with room to breathe.
+   ============================================================ */
+.page-hero {
+  background-image: url(../img/altiq/page-cover.jpg),
+                    linear-gradient(90deg, var(--aiq-50) 0%, var(--aiq-50) 32%, #ffffff 70%);
+  background-origin: content-box, padding-box;
+  background-position: right 56px center, center;
+  background-repeat: no-repeat, no-repeat;
+  background-size: auto 250px, cover;
+  border-bottom: 1px solid var(--aiq-line);
+}
+.page-hero-haddig h1 { color: var(--aiq-ink); }
+.page-hero-p a,
+.page-hero-p p,
+.page-hero-p span { color: var(--aiq-text-muted); }
+.page-hero-p a:hover { color: var(--aiq-700); }
+
+@media (max-width: 1199px) {
+  .page-hero { background-size: auto 200px, cover; background-position: right 24px center, center; }
+}
+@media (max-width: 991px) {
+  /* Art would crowd the heading — drop to the wash alone. */
+  .page-hero {
+    background-image: linear-gradient(90deg, var(--aiq-50), #ffffff);
+    height: 260px;
+  }
+}
+
+/* ============================================================
+   HERO IMAGE COLLAGE (home-2 hero)
+   The template's two-photo diagonal collage relies on each slot
+   having a fixed, DIFFERENT box — big frame bottom-right, small
+   frame top-left. The original template photos were pre-cropped
+   to exactly those two sizes (350x540 / 190x270), so the shipped
+   CSS never needed explicit dimensions.
+   Any replacement photo that isn't pre-cropped to that same pair
+   of sizes will inflate both slots to roughly the same size and
+   they will overlap almost completely. object-fit: cover lets any
+   source image drop in without repeating that crop by hand.
+   ============================================================ */
+.hero1-img-2 {
+  width: 400px;
+  height: 570px;
+}
+.hero1-img-2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+.hero1-img-3 {
+ width: 300px;
+  height: 430px;
+}
+.hero1-img-3 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+@media (max-width: 575px) {
+  .hero1-img-2 { width: 230px; height: 330px; }
+  .hero1-img-3 { width: 135px; height: 180px; }
+}

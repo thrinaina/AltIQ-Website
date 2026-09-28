@@ -1,0 +1,53 @@
+import { Component } from '@angular/core';
+import { CountUpModule } from 'ngx-countup';
+
+
+@Component({
+  selector: 'app-solutions',
+  imports: [CountUpModule],
+  template: `
+    <div class="choose2 sp3" id="choose">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hadding2">
+                        <span class="span" data-aos="fade-right" data-aos-duration="700">Why Choose Us</span>
+                        <div class="space16"></div>
+                        <h1 data-aos="fade-right" data-aos-duration="900">We Provide A Professional Business <span class="after2">Solutions</span></h1>
+                        <div class="space24"></div>
+                        <p data-aos="fade-right" data-aos-duration="800">At Advisor Consulting Company, we are a trusted business consulting firm dedicated to helping businesses thrive and reach their full potential.Our team of experienced consultants brings diverse industry knowledge and expertise in various business disciplines.</p>
+                        <div class="space20"></div>
+                        <p data-aos="fade-right" data-aos-duration="1000">
+                            We prioritize understanding your unique challenges and goals to deliver customized solutions tailored to your specific needs</p>
+
+                            <div class="counter-boxs" data-aos="fade-right" data-aos-duration="800">
+                                <div class="counter2-box">
+                                    <h2><span class="counter" [countUp]="76"></span></h2>
+                                    <p>Projects <br> Completed</p>
+                                </div>
+                                <div class="counter2-box">
+                                    <h2><span class="counter" [countUp]="14"></span></h2>
+                                    <p>Years of <br> Experience</p>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-right">
+                    <div class="choose2-images">
+                        <div class="choose2-img1 aniamtion-key-1">
+                            <img src="assets/img/shapes/home2-main-shape.svg" alt="">
+                        </div>
+                        <div class="choose2-img2 border-70" data-aos="zoom-out" data-aos-duration="800">
+                            <img src="assets/img/image/about2-image.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+  `,
+  styles: ``
+})
+export class SolutionsComponent {
+
+}

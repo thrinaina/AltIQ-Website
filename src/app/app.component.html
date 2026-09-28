@@ -1,0 +1,32 @@
+@if (preloaderService.isVisible) {
+<div class="theme-loader"
+  [ngClass]="preloaderService.preloaderClass">
+    
+  <div class="spinner">
+    <div class="spinner-bounce one"></div>
+    <div class="spinner-bounce two"></div>
+    <div class="spinner-bounce three"></div>
+  </div>
+</div>
+}
+
+
+<div class="paginacontainer">
+  <div
+    class="progress-wrap"
+    [class.active-progress]="isActive"
+    (click)="scrollToTop($event)"
+  >
+    <svg
+      class="progress-circle svg-content"
+      width="100%"
+      height="100%"
+      viewBox="-1 -1 102 102"
+    >
+      <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+    </svg>
+  </div>
+</div>
+
+
+<router-outlet />

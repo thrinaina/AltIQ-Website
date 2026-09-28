@@ -1,0 +1,86 @@
+
+<div [appBodyClass]="'font-f-4'">   
+<app-breadcrumb [Title]="'Frequently Asked Questions'" [subTitle]="'FAQ'" />
+
+<div class="faq-page sp3">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7 m-auto text-center">
+        <div class="page-hadding">
+          <h1>Frequently Asked Questions</h1>
+          <div class="space16"></div>
+          <p>
+            How our engagements work, what they cost, and how to tell which
+            service fits your situation.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="space30"></div>
+
+    <div class="row align-items-center">
+      <div class="col-lg-5">
+        <div class="space30"></div>
+        <div class="faq-img">
+          <img src="assets/img/altiq/lateral-code.jpg" alt="" />
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="space30"></div>
+        <div
+          class="accordion"
+          id="accordionExample"
+          ngbAccordion
+          [closeOthers]="true"
+        >
+          @for (item of faqData; track $index; let i = $index; let first =
+          $first) {
+          <div
+            ngbAccordionItem
+            [collapsed]="!first"
+            class="accordion-item accordion-item"
+            [attr.data-aos]="'fade-up'"
+            [attr.data-aos-duration]="'800'"
+          >
+            <h2
+              class="accordion-header active-header accordion-header2"
+              ngbAccordionHeader
+              [id]="'heading' + i"
+            >
+              <button
+                ngbAccordionButton
+                class="accordion-button accordion-button2"
+                type="button"
+                [attr.aria-expanded]="first ? 'true' : 'false'"
+                [attr.aria-controls]="item.id"
+              >
+                {{ item.question }}
+              </button>
+            </h2>
+
+            <div
+              ngbAccordionCollapse
+              class="accordion-collapse collapse"
+              [id]="item.id"
+              [attr.aria-labelledby]="'heading' + i"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body accordion-body2" ngbAccordionBody>
+                <ng-template>
+                  {{ item.answer }}
+                </ng-template>
+              </div>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-faq-2/>
+
+</div>

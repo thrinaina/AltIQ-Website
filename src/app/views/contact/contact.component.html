@@ -1,0 +1,160 @@
+<div [appBodyClass]="'font-f-4'">
+<app-breadcrumb [Title]="'Contact Us'" [subTitle]="'Contact Us'" />
+
+<div class="contact-page-all sp3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="contact-page-box text-center">
+                        <div class="contact-page-box-icon">
+                            <img src="assets/img/icons/contact-page-icon1.svg" alt="">
+                            <div class="space14">    </div>
+                            <div class="contact-hadding">
+                                <h4>Registered Entity</h4>
+                                <div class="space16"></div>
+                                <span>AltIQ Labs Private Limited</span> <br>
+                                <span>India</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="contact-page-box text-center">
+                        <div class="contact-page-box-icon">
+                            <img src="assets/img/icons/contact-page-icon2.svg" alt="">
+                            <div class="space14">    </div>
+                            <div class="contact-hadding">
+                                <!-- TODO: no phone number is published on altiqlabs.com. Replace when supplied. -->
+                                <h4>Enquiries</h4>
+                                <div class="space16"></div>
+                                <a href="https://forms.gle/mMQjyHSvWDKzVe2i7" target="_blank" rel="noopener">Open our enquiry form</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="contact-page-box text-center">
+                        <div class="contact-page-box-icon">
+                            <img src="assets/img/icons/contact-page-icon3.svg" alt="">
+                            <div class="space14">    </div>
+                            <div class="contact-hadding">
+                                <!-- TODO: no email address is published on altiqlabs.com. Replace when supplied. -->
+                                <h4>Terms &amp; Conditions</h4>
+                                <div class="space16"></div>
+                                <a href="https://termsandconditions.altiqlabs.com" target="_blank" rel="noopener">Read our terms</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="space100"></div>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="contact-img img100">
+                        <img src="assets/img/altiq/innovation.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="page-hadding">
+                        <h1>Leave A Message</h1>
+                        <div class="space14"></div>
+                        <p>Tell us where your enterprise is today and which perspective you are working from. We will come back with the service tier that fits — including whether a free 5D discovery is the right starting point.</p>
+                        <div class="space30"></div>
+                        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+                            <div class="checkout-heads">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="checkout-input">
+                                          <input
+                          type="text"
+                          placeholder="First Name*"
+                          formControlName="firstName"
+                          [class.is-invalid]="isInvalid('firstName')"
+                          [class.is-valid]="isValid('firstName')"
+                        />
+                             <div
+                          class="invalid-feedback">
+                          First Name is required.
+                        </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-lg-6">
+                                        <div class="checkout-input">
+                                          <input
+                          type="text"
+                          placeholder="Last Name*"
+                          formControlName="lastName"
+                          [class.is-invalid]="isInvalid('lastName')"
+                          [class.is-valid]="isValid('lastName')"
+                        />
+                        <div class="invalid-feedback" >
+                          Last Name is required.
+                        </div>
+                                        </div>
+                                      </div>
+                                </div>
+                                    <div class="optional-input">
+                                     <input
+                          type="email"
+                          placeholder="Email Address*"
+                          formControlName="email"
+                          [class.is-invalid]="isInvalid('email')"
+                          [class.is-valid]="isValid('email')"
+                        />
+                        <div class="invalid-feedback">Please provide a valid email address.</div>
+                                    </div>
+                                    <div class="optional-input">
+                                    
+                                      <select
+                          class="country-area form-select wide"
+                          formControlName="countryType"
+                          [class.is-invalid]="isInvalid('countryType')"
+                          [class.is-valid]="isValid('countryType')"
+                        >
+                          <option value="">United states (US)</option>
+                          <option value="option1">Option 1</option>
+                          <option value="option2">Option 2</option>
+                        <option value="option3">Option 3</option>
+                        <option value="option4">Option 4</option>
+                        <option value="option5">Option 5</option>
+                        </select>
+                        <div
+                          class="invalid-feedback">
+                          Please select an appointment type.
+                        </div>
+                                    </div>
+                                  <div class="space60"></div>
+                                    <div class="optional-input">
+                                      <textarea
+                          cols="30"
+                          rows="3"
+                          placeholder="Your Message*"
+                          formControlName="message"
+                          [class.is-invalid]="isInvalid('message')"
+                          [class.is-valid]="isValid('message')"
+                        ></textarea>
+                        <div
+                          class="invalid-feedback">
+                          Message is required.
+                        </div>
+                                    </div>
+                                    <div class="space30"></div>
+                                    <button class="comon-button" type="submit">Send Now</button>
+
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+
+      <div class="contact-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d196064.65881483705!2d88.93201515862421!3d24.061083775097945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39febca82f6a21ed%3A0x4040980d7c6874f8!2sKushtia%20District!5e0!3m2!1sen!2sbd!4v1673751720794!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      </div>

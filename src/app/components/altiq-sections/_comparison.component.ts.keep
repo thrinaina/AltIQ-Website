@@ -1,0 +1,118 @@
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
+
+@Component({
+  selector: 'app-progress',
+  imports: [NgbProgressbarModule, RouterLink, CommonModule],
+  template: `
+    <div class="progress8 sp3" id="progress">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <div class="hadding8 progress8-hadding">
+              <span data-aos="fade-right" data-aos-duration="700"
+                >Company Progress</span
+              >
+              <div class="space16"></div>
+              <h1 data-aos="fade-right" data-aos-duration="800">
+                Company progress world record in business
+              </h1>
+              <div class="space20"></div>
+              <p data-aos="fade-right" data-aos-duration="1000">
+                At Taxvice Business Consulting, we specialize in helping
+                businesses achieve their full potential. Whether you're a
+                startup looking to establish a strong.
+              </p>
+              <div class="space16"></div>
+              <p data-aos="fade-right" data-aos-duration="700">
+                It's important to note that consulting services can vary in
+                their approach and methodology, and the specific services
+                offered will depend.
+              </p>
+
+              <div class="space30"></div>
+
+              <div
+                class="porgress-line-all"
+                data-aos="fade-right"
+                data-aos-duration="1000"
+              >
+                <div class="progress-line" *ngFor="let item of progressItems">
+                  <h6>{{ item.label }}</h6>
+                  <div class="progressbar-wrapper" data-init="true">
+                    <div class="percentCount">{{ item.current }}%</div>
+                    <div
+                      class="progressbar"
+                      [ngStyle]="{
+                        width: '100%',
+                        backgroundColor: 'var(--aiq-line)',
+                        borderRadius: '8px'
+                      }"
+                    >
+                      <div
+                        class="proggress"
+                        [ngStyle]="{
+                          backgroundColor: 'var(--aiq-700)',
+                          height: '10px',
+                          borderRadius: '8px',
+                          width: item.current + '%'
+                        }"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="" data-aos="fade-right" data-aos-duration="800">
+                <a routerLink="/service" class="theme-btn10">Request A Quote</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div
+              class="_relative progress8-images"
+              data-aos="zoom-out"
+              data-aos-duration="1000"
+            >
+              <div class="progress8-shape ">
+                <img src="assets/img/shapes/hero8-shape2.svg" alt="" />
+              </div>
+              <div class="progress8-img img5 img100">
+                <img src="assets/img/image/progress8-img.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `,
+  styles: ``,
+})
+export class ProgressComponent {
+  progressItems = [
+    { label: 'Consulting', target: 90, current: 0 },
+    { label: 'Marketing', target: 80, current: 0 },
+  ];
+
+  ngOnInit(): void {
+    this.animateProgress();
+  }
+
+  animateProgress(): void {
+    const speed = 30;
+    this.progressItems.forEach((item, idx) => {
+      let i = 0;
+      const interval = setInterval(() => {
+        if (i <= item.target) {
+          this.progressItems[idx].current = i;
+          i++;
+        } else {
+          clearInterval(interval);
+        }
+      }, speed);
+    });
+  }
+}

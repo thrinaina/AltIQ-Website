@@ -1,0 +1,39 @@
+<header>
+  <div
+    class="header-area header-area-all header-area-all-pages d-none d-lg-block"
+    id="header"
+    [class.sticky]="isSticky"
+  >
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="header-elements">
+            <div class="site-logo home1-site-logo">
+              <a routerLink="/"
+                ><img src="assets/img/logo/altiq-logo-mark.png" alt="AltIQ Labs — Thinking Laterally" class="aiq-logo" />
+              </a>
+            </div>
+
+            <div class="main-menu-ex main-menu-ex1">
+              <app-nav-list/>
+            </div>
+
+            <div class="home2-header-buttons">
+              <div class="button1-all">
+                <a routerLink="/contact" class="comon-button"
+                  >Get Started<span></span
+                ></a>
+              </div>
+            </div>
+            <div class="mobile-menu-bar d-lg-none" >
+              <i class="fas fa-bars"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<app-mobile-header [isMenuOpen]="isMenuOpen" 
+  (toggle)="toggleMenu()" 
+  (close)="closeMenu()"/>

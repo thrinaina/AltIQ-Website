@@ -1,0 +1,125 @@
+<div [appBodyClass]="'font-f-4'">
+<app-breadcrumb [Title]="service().name" [subTitle]="'Service Catalog'" />
+
+<div class="service-details sp3">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-4">
+        <div class="service-details-sidebar">
+          <div class="service-details-sidebar-box">
+            <h3>Service Catalog</h3>
+            <div class="space24"></div>
+            <ul>
+              @for (item of all; track item.slug) {
+              <li>
+                <a [routerLink]="['/service-details', item.slug]"
+                   [class.active]="item.slug === service().slug">
+                  {{ item.name }}
+                  <span><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+              </li>
+              }
+            </ul>
+          </div>
+          <div class="space30"></div>
+          <div class="service-details-sidebar-box">
+            <h3>Not sure where to start?</h3>
+            <div class="space16"></div>
+            <p>The 5D Assessment begins with a free discovery conversation.</p>
+            <div class="space24"></div>
+            <a routerLink="/contact" class="btn_theme btn_theme_active">Talk to us<span></span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-8">
+        <div class="service-details-content">
+          <h2>{{ service().name }}</h2>
+          <div class="space16"></div>
+          <p style="color: var(--aiq-700); font-size: 20px;">{{ service().tagline }}</p>
+          <div class="space24"></div>
+          <p>{{ service().intro }}</p>
+
+          @if (service().audience) {
+          <div class="space24"></div>
+          <p><strong>Who it is for:</strong> {{ service().audience }}</p>
+          }
+
+          @if (service().coverage.length) {
+          <div class="space40"></div>
+          <h2>What it covers</h2>
+          <div class="space24"></div>
+          <div class="row">
+            @for (group of service().coverage; track group.heading) {
+            <div class="col-lg-6">
+              <div class="service1-box h-100" style="margin-bottom: 24px;">
+                <div class="hadding1 text-start">
+                  <h4>{{ group.heading }}</h4>
+                  <div class="space14"></div>
+                  <ul class="service-details-list">
+                    @for (i of group.items; track $index) {
+                    <li><i class="fa-solid fa-check"></i> {{ i }}</li>
+                    }
+                  </ul>
+                </div>
+              </div>
+            </div>
+            }
+          </div>
+          }
+
+          @if (service().deliverables?.length) {
+          <div class="space24"></div>
+          <h4>Deliverables</h4>
+          <div class="space14"></div>
+          <ul class="service-details-list">
+            @for (d of service().deliverables!; track $index) {
+            <li><i class="fa-solid fa-check"></i> {{ d }}</li>
+            }
+          </ul>
+          }
+
+          @if (service().models.length) {
+          <div class="space40"></div>
+          <h2>Engagement models</h2>
+          <div class="space24"></div>
+          <div class="table-responsive">
+            <table class="table aiq-pricing">
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>Commitment</th>
+                  <th>Indicative price</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (m of service().models; track m.name) {
+                <tr>
+                  <td>
+                    <strong>{{ m.name }}</strong>
+                    @if (m.popular) { <span class="aiq-pill">Most popular</span> }
+                  </td>
+                  <td>{{ m.commitment }}</td>
+                  <td>{{ m.price }}</td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+          }
+
+          @if (service().note) {
+          <div class="space24"></div>
+          <p style="color: var(--aiq-text-muted);">{{ service().note }}</p>
+          }
+
+          <div class="space40"></div>
+          <a routerLink="/contact" class="btn_theme btn_theme_active">Schedule a consultation<span></span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>

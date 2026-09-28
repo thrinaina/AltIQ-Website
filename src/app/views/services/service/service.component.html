@@ -1,0 +1,35 @@
+<div [appBodyClass]="'font-f-4'">   
+<app-breadcrumb [Title]="'Our Services'" [subTitle]="'Our Services'" />
+
+<div class="about-page-service sp3">
+  <div class="container">
+    <div class="row">
+      @for(item of servicesData;track $index ){
+      <div class="col-lg-6">
+        <div class="">
+          <div class="service1-box">
+            <div class="">
+              <div class="service1-box-icon">
+                <img [src]="item.icon" alt="" />
+              </div>
+            </div>
+            <div class="hadding1 text-start">
+              <h2>
+                <a [routerLink]="['/service-details', item.slug]">{{ item.name }}</a>
+              </h2>
+              <div class="space14"></div>
+              <p [innerHTML]="item.des"></p>
+              <div class="space24"></div>
+              <a class="learn-more1" [routerLink]="['/service-details', item.slug]"
+                >Read More<span><i class="fa-solid fa-arrow-right"></i></span
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>
+</div>
+

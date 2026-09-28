@@ -1,0 +1,49 @@
+<div class="faq sp3" style="background-color: var(--aiq-surface-2);">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 m-auto">
+        <div class="page-hadding text-center">
+          <h1>Frequently Asked Questions</h1>
+        </div>
+
+        <div class="space60"></div>
+
+        <div class="accordion" id="accordionExample" ngbAccordion>
+          @for (item of faqItems; let i = $index; let first = $first;track i) {
+            <div
+              ngbAccordionItem
+              class="accordion-item accordion-item font-f-2"
+              [collapsed]="!first"
+            >
+              <h2 class="accordion-header accordion-header2" [id]="'heading' + i">
+                <button
+                  class="accordion-button accordion-button3"
+                  type="button"
+                  ngbAccordionButton
+                  [attr.aria-expanded]="first ? 'true' : 'false'"
+                  [attr.aria-controls]="item.id"
+                >
+                  {{ item.question }}
+                </button>
+              </h2>
+
+              <div
+                class="accordion-collapse collapse"
+                [id]="item.id"
+                ngbAccordionCollapse
+                [attr.aria-labelledby]="'heading' + i"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body accordion-body2" ngbAccordionBody>
+                  <ng-template>
+                    {{ item.answer }}
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

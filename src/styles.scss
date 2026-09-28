@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../src/assets/css/animation.css';
+@import '../node_modules/aos/dist/aos.css';
+@import '../src/assets/css/blog-page.css';
+@import '../src/assets/css/fonts.css';
+@import '../src/assets/css/header.css';
+@import '../src/assets/css/magnific-popup.css';
+@import '../src/assets/css/meanmenu.css';
+@import '../src/assets/css/mobile-menu.css';
+@import '../src/assets/css/modal-video.min.css';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import '../src/assets/css/slick-slider.css';
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+@import "../node_modules/@ng-select/ng-select/themes/default.theme.css";
+@import '../src/assets/css/footer.css';
+@import '../src/assets/css/typography.css';
+@import '../src/assets/css/comon.css';
+@import '../src/assets/css/nice-select.css';
+@import '../src/assets/css/advisr-unit.css' ;
+@import '../src/assets/css/advisr-core.css' ;
+@import '../src/assets/css/responsive.css';
+
+/* AltIQ monotone token layer — MUST load last so it wins. */
+@import '../src/assets/css/aiq-tokens.css';

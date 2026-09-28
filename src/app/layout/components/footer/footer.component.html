@@ -1,0 +1,112 @@
+<footer class="footer-area4" style="background-color: var(--aiq-950); color: var(--aiq-white)">
+  <div class="container">
+    <div class="row footer4-border">
+      <div class="col-lg-4 col-sm-6">
+        <div class="single-footer single-footer4 mr50">
+          <a routerLink="/" class="footer-logo">
+            <img src="assets/img/logo/altiq-logo-light.png" alt="AltIQ Labs — Thinking Laterally" class="aiq-logo"
+          /></a>
+          <div class="space30"></div>
+          <p>
+            Our policies are underwritten by large partner A.M. Best top rated
+            carriers, meaning you will be protected by the best. See our
+            featured carrier list here.
+          </p>
+        </div>
+        <div class="space24"></div>
+        <div class="social social4">
+          <ul>
+            @for(items of socialIcons; track $index){
+            <li>
+              <a
+                data-bs-toggle="tooltip"
+                [title]="items.title"
+                [routerLink]="[]"
+                ><i [class]="items.icon"></i
+              ></a>
+            </li>
+            }
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg col-sm-6">
+        <div class="single-footer single-footer4">
+          <h3>Company</h3>
+          <div class="space10"></div>
+          <div class="footer-menu">
+             <ul>
+                @for(items of footermenu; track $index) {
+                 <li><a [routerLink]="items.link">{{items.name}}</a></li>
+                }
+              </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg col-sm-6">
+        <div class="single-footer single-footer4">
+          <h3>Useful Links</h3>
+          <div class="space10"></div>
+          <div class="footer-menu">
+            <ul>
+              @for (items of usefullinks;track $index){
+              <li>
+                <a [routerLink]="items.link">{{ items.name }}</a>
+              </li>
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <div class="single-footer single-footer4">
+          <h3>Contact Info</h3>
+          <div class="space10"></div>
+          <div class="footer4-contact-info">
+            <div class="contact-info-single">
+              <div class="contact-info-icon">
+                <img src="assets/img/icons/footer4-contact1.svg" alt="" />
+              </div>
+              <div class="contact-info-text">
+                <a href="https://forms.gle/mMQjyHSvWDKzVe2i7" target="_blank" rel="noopener">Enquiry form</a>
+              </div>
+            </div>
+
+            <div class="contact-info-single">
+              <div class="contact-info-icon">
+                <img src="assets/img/icons/footer4-contact2.svg" alt="" />
+              </div>
+              <div class="contact-info-text">
+                <a href="https://forms.gle/mMQjyHSvWDKzVe2i7" target="_blank" rel="noopener">Enquiry form</a>
+              </div>
+            </div>
+            <div class="space20"></div>
+            <div class="single-footer single-footer4">
+              <h3>Our Location</h3>
+
+              <div class="contact-info-single">
+                <div class="contact-info-icon">
+                  <img src="assets/img/icons/footer4-contact3.svg" alt="" />
+                </div>
+                <div class="contact-info-text">
+                  <a href="https://forms.gle/mMQjyHSvWDKzVe2i7" target="_blank" rel="noopener">Enquiry form</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row align-items-center copyright4">
+      <div class="col-lg-6">
+        <p class="copyright-p4">
+          © Copyright {{currentYear}} AltIQ Labs Private Limited (INDIA). All rights reserved. <br />
+        </p>
+      </div>
+      <div class="col-lg-6 text-right">
+        <ul class="Conditions4">
+          <li><a href="https://termsandconditions.altiqlabs.com" target="_blank" rel="noopener">Terms &amp; Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
